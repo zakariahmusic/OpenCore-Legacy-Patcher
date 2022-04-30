@@ -543,24 +543,52 @@ class Constants:
         return self.payload_path / Path("OC-Patcher.icns")
 
     @property
+    def icon_path(self):
+        return self.payload_path / Path("Icon")
+
+    @property
     def icon_path_external(self):
-        return self.payload_path / Path("Icon/External/.VolumeIcon.icns")
+        return self.icon_path / Path("External/.VolumeIcon.icns")
 
     @property
     def icon_path_internal(self):
-        return self.payload_path / Path("Icon/Internal/.VolumeIcon.icns")
+        return self.icon_path / Path("Internal/.VolumeIcon.icns")
 
     @property
     def icon_path_sd(self):
-        return self.payload_path / Path("Icon/SD-Card/.VolumeIcon.icns")
+        return self.icon_path / Path("SD-Card/.VolumeIcon.icns")
 
     @property
     def icon_path_ssd(self):
-        return self.payload_path / Path("Icon/SSD/.VolumeIcon.icns")
+        return self.icon_path / Path("SSD/.VolumeIcon.icns")
 
     @property
     def gui_path(self):
-        return self.payload_path / Path("Icon/Resources.zip")
+        return self.icon_path / Path("Resources.zip")
+
+    @property
+    def wxpython_gui_path(self):
+        return self.icon_path / Path("GUI")
+    
+    @property
+    def wxpython_build_icon_path(self):
+        return self.wxpython_gui_path / Path("Button-Build-Install.png")
+    
+    @property
+    def wxpython_post_install_icon_path(self):
+        return self.wxpython_gui_path / Path("Button-Post-Install.png")
+    
+    @property
+    def wxpython_installer_icon_path(self):
+        return self.wxpython_gui_path / Path("Button-Create-macOS-Installer.png")
+    
+    @property
+    def wxpython_settings_icon_path(self):
+        return self.wxpython_gui_path / Path("Button-Settings.png")
+    
+    @property
+    def wxpython_help_icon_path(self):
+        return self.wxpython_gui_path / Path("Button-Help.png")
 
     @property
     def installer_pkg_path(self):

@@ -274,7 +274,7 @@ class wx_python_gui:
         self.subheader.Centre(wx.HORIZONTAL)
 
         # Build and Install OpenCore
-        self.build_install = wx.Button(self.frame, label="Build and Install OpenCore", size=(200,30))
+        self.build_install = wx.Button(self.frame, label="Build and Install OpenCore", size=(220,30))
         self.build_install.SetPosition(
             wx.Point(
                 self.header.GetPosition().x,
@@ -283,6 +283,11 @@ class wx_python_gui:
         )
         self.build_install.Bind(wx.EVT_BUTTON, self.build_install_menu)
         self.build_install.Centre(wx.HORIZONTAL)
+
+        self.icon = wx.StaticBitmap(self.build_install, wx.ID_ANY, wx.Bitmap(str(self.constants.wxpython_build_icon_path)))
+        # set position to left of build and install button
+        self.icon.SetPosition((4,4.5))
+        self.icon.SetSize((22,22))
         
         # Disable button if real_model not in model_array.SupportedSMBIOS
         if self.constants.allow_oc_everywhere is False and \
@@ -292,7 +297,7 @@ class wx_python_gui:
             self.build_install.SetToolTip(wx.ToolTip("""If building for a native Mac model, \nselect 'Allow Native Models' in Settings.\nIf building for another Mac, change model in Settings"""))
 
         # Post Install Root Patch
-        self.post_install = wx.Button(self.frame, label="Post Install Root Patch", size=(200,30))
+        self.post_install = wx.Button(self.frame, label="Post Install Root Patch", size=(220,30))
         self.post_install.SetPosition(
             wx.Point(
                 self.build_install.GetPosition().x,
@@ -301,6 +306,12 @@ class wx_python_gui:
         )
         self.post_install.Bind(wx.EVT_BUTTON, self.root_patch_menu)
         self.post_install.Centre(wx.HORIZONTAL)
+
+        self.icon = wx.StaticBitmap(self.post_install, wx.ID_ANY, wx.Bitmap(str(self.constants.wxpython_post_install_icon_path)))
+        # set position to left of build and install button
+        self.icon.SetPosition((5,6))
+        self.icon.SetSize((18,18))
+
         if self.constants.detected_os in [os_data.os_data.mojave, os_data.os_data.catalina]:
             self.post_install.SetToolTip(wx.ToolTip("""Graphics Acceleration for Mojave and Catalina has been removed in 0.4.4 onwards.\n\nIf you require this feature, use 0.4.3 or older"""))
             self.post_install.Disable()
@@ -309,7 +320,7 @@ class wx_python_gui:
             self.post_install.Disable()
 
         # Create macOS Installer
-        self.create_installer = wx.Button(self.frame, label="Create macOS Installer", size=(200,30))
+        self.create_installer = wx.Button(self.frame, label="Create macOS Installer", size=(220,30))
         self.create_installer.SetPosition(
             wx.Point(
                 self.post_install.GetPosition().x,
@@ -319,8 +330,13 @@ class wx_python_gui:
         self.create_installer.Bind(wx.EVT_BUTTON, self.create_macos_menu)
         self.create_installer.Centre(wx.HORIZONTAL)
 
+        self.icon = wx.StaticBitmap(self.create_installer, wx.ID_ANY, wx.Bitmap(str(self.constants.wxpython_installer_icon_path)))
+        # set position to left of build and install button
+        self.icon.SetPosition((5,6))
+        self.icon.SetSize((18,18))
+
         # Settings
-        self.settings = wx.Button(self.frame, label="Settings", size=(200,30))
+        self.settings = wx.Button(self.frame, label="Settings", size=(220,30))
         self.settings.SetPosition(
             wx.Point(
                 self.create_installer.GetPosition().x, 
@@ -330,8 +346,13 @@ class wx_python_gui:
         self.settings.Bind(wx.EVT_BUTTON, self.settings_menu)
         self.settings.Centre(wx.HORIZONTAL)
 
+        self.icon = wx.StaticBitmap(self.settings, wx.ID_ANY, wx.Bitmap(str(self.constants.wxpython_settings_icon_path)))
+        # set position to left of build and install button
+        self.icon.SetPosition((5,6))
+        self.icon.SetSize((18,18))
+
         # Help Button
-        self.help_button = wx.Button(self.frame, label="Help", size=(200,30))
+        self.help_button = wx.Button(self.frame, label="Help", size=(220,30))
         self.help_button.SetPosition(
             wx.Point(
                 self.settings.GetPosition().x,
@@ -340,6 +361,11 @@ class wx_python_gui:
         )
         self.help_button.Bind(wx.EVT_BUTTON, self.help_menu)
         self.help_button.Centre(wx.HORIZONTAL)
+
+        self.icon = wx.StaticBitmap(self.help_button, wx.ID_ANY, wx.Bitmap(str(self.constants.wxpython_help_icon_path)))
+        # set position to left of build and install button
+        self.icon.SetPosition((5,6))
+        self.icon.SetSize((18,18))
 
 
         # Copyright Label
